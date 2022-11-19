@@ -1,26 +1,66 @@
-const router = require('express').Router();
-const { Post, Comment, User } = require('../models');
+const router = require("express").Router();
+const { Post, Comment, User } = require("../models");
+
 
 //GET all posts for homepage with users data
-router.get('/', async (req, res) => {
-	try {
-		const postData = await postMessage.findAll({
-			include: [{ model: Comments,through: Users }],
-		})
-		res.status(200).json(postData);
-	} catch (err) {
-		res.status(500).json(err);
-	}
-	});
+router.get("/", async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      include: [User],
+    });
 
-  router.get('/login', (req, res) => {
-	// If the user is already logged in, redirect the request to another route
-	if (req.session.logged_in) {
-	  res.redirect('/');
-	  return;
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render("all-posts", { posts });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+// get single post by id
+router.get("/post/:id", async (req, res) => {
+try {
+    const postData = await Post.findByPk(req.params.id, {
+    include: [
+        User,
+        {
+        model: Comment,
+        include: [User],
+        },
+    ],
+    });
+
+    if (postData) {
+    const post = postData.get({ plain: true });
+
+    res.render("single-post", { post });
+    } else {
+    res.status(404).end();
+    }
+} catch (err) {
+    res.status(500).json(err);
+}
+});
+
+//if login is true go to homeroute 
+router.get('/login', (req, res) => {
+	if (req.session.loggedIn) {
+	res.redirect('/');
+	return;
 	}
-  
+
 	res.render('login');
-  });
-  
-  module.exports = router;
+});
+
+//sign up page creates login otherwise redirect to home
+router.get('/signup', (req, res) => {
+	if (req.session.loggedIn) {
+	res.redirect('/');
+	return;
+	}
+
+	res.render('signup');
+});
+
+module.exports = router;
