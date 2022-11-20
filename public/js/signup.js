@@ -9,14 +9,14 @@ const signupFormHandler = async function(event) {
 		body: JSON.stringify({ userName, password }),
 		headers: { 'Content-Type': 'application/json' },
 	  });
-  
+  console.log(response);
 	  if (response.ok) {
-		document.location.replace('/dashboard');
+		document.location.replace('/');
 	  } else {
 		alert('failed to sign up');
 	  }
 	};
   
   document
-  .querySelector('#submit-btn-signup')
+  .querySelector('#submit-btn-event')
   .addEventListener('submit', signupFormHandler);
