@@ -1,0 +1,57 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: rgb(200, 108, 58);
+	margin: 0;
+	padding: 0;
+	font-family: 'Sono', sans-serif;
+	color: rgb(58, 22, 2);
+	font-size: 20px;
+}
+
+#title-link {
+	color: rgb(58, 22, 2);
+	font-weight: bold;
+	font-size: 45px;
+}
+
+#new-post-form {
+	background-color: rgb(53, 186, 120);
+}
+
+.form-input {
+	width: 30%;
+	margin-left: 20px;
+}
+
+#submit-btn {
+	background-color: rgb(53, 186, 120);
+	margin-left: 10px;
+}
+
+#btn-signup {
+	color:rgb(53, 186, 120);
+}
+
+.post-list {
+	background-color: rgb(53, 186, 120);
+}
+
+
+#footer-link {
+	color: rgb(53, 186, 120);
+	font-weight: 7px;
+	font-size: 25px;
+	letter-spacing: .5rem;
+}
+
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
