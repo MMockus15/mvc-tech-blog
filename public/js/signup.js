@@ -1,10 +1,9 @@
-const signupFormHandler = async (event) => {
+const signupFormHandler = async function(event) {
 	event.preventDefault();
   
-	const userName = document.querySelector('#signupUserName').value.trim();
-	const password = document.querySelector('#signupPassword').value.trim();
+	const userName = document.querySelector('#signupUserName');
+	const password = document.querySelector('#signupPassword');
   
-	if (userName && password) {
 	  const response = await fetch('/api/users', {
 		method: 'POST',
 		body: JSON.stringify({ userName, password }),
@@ -16,8 +15,7 @@ const signupFormHandler = async (event) => {
 	  } else {
 		alert('failed to sign up');
 	  }
-	}
-  };
+	};
   
   document
   .querySelector('#submit-btn-signup')
