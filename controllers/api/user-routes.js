@@ -63,10 +63,9 @@ console.log(validPassword);
 //realtive path = /api/users/logout
 router.post('/logout', (req, res) => {
 	if (req.session.loggedIn) {
-		console.log(req.session.loggedIn);
 	req.session.destroy(() => {
-		console.log(req.session);
 		res.status(204).end();
+		console.log("you are logged out!");
 	});
 	} else {
 	res.status(404).end();

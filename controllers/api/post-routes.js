@@ -9,10 +9,15 @@ router.post("/", withAuth, async (req, res) => {
   const body = req.body;
 
   try {
-    const newPost = await Post.create({ ...body, userId: req.session.userId });
+    const newPost = await Post.create({ 
+      title: req.body.title,
+      body: req.body.body,
+      userId: req.session.userId });
     res.json(newPost);
+    console.log(newPost);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
