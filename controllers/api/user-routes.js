@@ -5,11 +5,15 @@ const { User } = require('../../models');
 //relative path = /api/users
 router.post('/', async (req, res) => {
 	try {
-	const userData = await User.create(req.body);
-
+	const userData = await User.create({
+		userName: req.body.userName,
+		password: req.body.password,
+	});
+		console.log(userData);
 	req.session.save(() => {
-		req.session.user_id = userData.id;
-		req.session.logged_in = true;
+		req.session.id = userData.id;
+		req.session.userName = userData.userName;
+		req.session.loggedIn = true;
 
 		res.status(200).json(userData);
 	});
@@ -22,13 +26,12 @@ router.post('/', async (req, res) => {
 //realtive path = /api/users/login
 router.post('/login', async (req, res) => {
 	try {
-	const userData = await User.findOne({ where: { email: req.body.email } });
-	console.log("🚀 ~ file: userRoutes.js ~ line 22 ~ router.post ~ userData", userData)
-
+	const userData = await User.findOne({ where: { userName: req.body.userName } });
+		console.log(userData);
 	if (!userData) {
 		res
 		.status(400)
-		.json({ message: 'Incorrect email or password, please try again' });
+		.json({ message: 'Incorrect username or password, please try again' });
 		return;
 	}
 
@@ -37,13 +40,14 @@ router.post('/login', async (req, res) => {
 	if (!validPassword) {
 		res
 		.status(400)
-		.json({ message: 'Incorrect email or password, please try again' });
+		.json({ message: 'Incorrect username or password, please try again' });
 		return;
 	}
 
 	req.session.save(() => {
-		req.session.user_id = userData.id;
-		req.session.logged_in = true;
+		req.session.id = userData.id;
+		req.session.userName = userData.userName;
+		req.session.loggedIn = true;
 		
 		res.json({ user: userData, message: 'You are now logged in!' });
 	});
@@ -56,7 +60,7 @@ router.post('/login', async (req, res) => {
 //log out logged in user
 //realtive path = /api/users/logout
 router.post('/logout', (req, res) => {
-	if (req.session.logged_in) {
+	if (req.session.loggedIn) {
 	req.session.destroy(() => {
 		res.status(204).end();
 	});
