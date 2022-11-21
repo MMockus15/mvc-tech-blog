@@ -1,19 +1,8 @@
-{{!-- 
-
-	<div class="card" style="width: 95% align-center;">
-		<div class="card-header">
-		Featured Talk
-		</div>
-		{{#each posts}}
+<div class="posts list-group">
+{{#each posts}}
     <a class="list-item flex-row justify-space-between" href="/dashboard/edit/{{id}}">
     <span>{{title}}</span>
     <span>{{format_date createdAt}}</span>
     </a>
-		{{/each}}
-		{{!-- <ul class="list-group list-group-flush">
-		<li class="post-list list-group-item">USER POST</li>
-		<li class="post-list list-group-item">USER POST</li>
-		<li class="post-list list-group-item">USER POST</li>
-		</ul> --}}
-	</div>
-</main> --}}
+{{/each}}
+</div>
