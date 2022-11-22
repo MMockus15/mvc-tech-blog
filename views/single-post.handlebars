@@ -1,21 +1,30 @@
 
 
 <main class="col-auto">
-	<div class="card" style="width: 95% align-center;">
+	<div class="post card">
 		<div class="card-header">
-		Featured Talk
+		<h2>Create New Talk</h2>
 		</div>
-		<ul class="list-group list-group-flush">
-		<li class="post-list list-group-item">USER POST</li>
-		</ul>
+		<form id="new-post-form" class="card-body">
+
+		<input type="text" name="post-id" class="form-input" value="{{post.id}}"/>
+
+		<label class="form-label" for="post-body">Talk</label>
+
+		<textarea name="post-body" class="form-input"></textarea>
+	
+	
+	<ul style="list-style: none;">
+		<li><button type="submit" class="btn talk-adds">👉 Add Your Talk</button>
+		</li>
+	</ul>
+		</form>
 	</div>
 </main>
-<footer class="flex-row justify-center"><a id="footer-link" href="/dashboard/new">👉 Add Talk</a>
-</footer>
 
 
 
 
-
+<script src="/js/comment.js"></script>
 </body>
 </html>

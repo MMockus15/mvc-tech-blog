@@ -5,7 +5,7 @@ const { Post } = require("../../models");
 
 //route that creates a new post
 //relative path = /api/post/
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
   const body = req.body;
 
   try {
@@ -20,7 +20,7 @@ router.post("/", withAuth, async (req, res) => {
 
 //updating post with post:id value
 //relative path = /api/post/:id
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const [affectedRows] = await Post.update(req.body, {
       where: {
@@ -35,12 +35,13 @@ router.put("/:id", withAuth, async (req, res) => {
     }
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
 //delete post by id
 //realtive path = /api/post/:id
-router.delete("/:id", withAuth, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const [affectedRows] = await Post.destroy({
       where: {
@@ -55,6 +56,7 @@ router.delete("/:id", withAuth, async (req, res) => {
     }
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
