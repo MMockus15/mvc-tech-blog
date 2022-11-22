@@ -1,9 +1,15 @@
 
 
 <main class="col-auto">
+	<h1>{{title}}</h1>
+
+	<p>{{body}}</p>
+
+
+	{{#if req.session.loggedIn}}
 	<div class="post card">
 		<div class="card-header">
-		<h2>Create New Talk</h2>
+		<h2>Add Comment</h2>
 		</div>
 		<form id="new-post-form" class="card-body">
 
@@ -20,11 +26,24 @@
 	</ul>
 		</form>
 	</div>
+	{{/if}}
+
+
+	{{#if post.Comments}}
+	<h2>Comments</h2>
+
+	{{#each}}
+	<p>{{Comments.body}}</p>
+
+	{{/each}}
+
+	{{/if}}
 </main>
 
 
 
-
+{{#if Comments}}
 <script src="/js/comment.js"></script>
+{{/if}}
 </body>
 </html>

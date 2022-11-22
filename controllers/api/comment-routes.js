@@ -18,19 +18,20 @@ router.get("/", (req, res) => {
 //(pulls up all posts)
 //add comment
 //realtive path = api/comments/
-router.post('/', (req, res) => {
-    if (req.session) {
+router.post('/',  (req, res) => {
+    console.log(req.session.id);
         Comment.create({
                 body: req.body.body,
-                postId: req.body.postId,
-                userId: req.session.userId
+                post_id: req.body.postId,
+                //change back to session
+               user_id: req.body.user_id
             })
             .then(commentData => res.json(commentData))
             .catch(err => {
                 console.log(err);
                 res.status(400).json(err);
             });
-    }
+    
 });
 
 module.exports = router;

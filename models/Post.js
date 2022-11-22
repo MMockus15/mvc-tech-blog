@@ -24,15 +24,7 @@ Post.init(
             len: [1]
         }
     },
-    userId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'User',
-            key: 'id'
-        },
-        onUpdate: 'cascade',
-		onDelete: 'cascade'
-    }
+    
 }, {
     sequelize,
     freezeTableName: true,

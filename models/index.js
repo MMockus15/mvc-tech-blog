@@ -5,19 +5,19 @@ const Comment = require('./Comment');
 
 //set up relationships between models
 Post.belongsTo(User, {
-	foreignKey: 'userId',
+	foreignKey: 'user_id',
 	onDelete: 'cascade'
 });
 
 //set relationship between post and comment
 Post.hasMany(Comment, {
-	foreignKey: 'postId',
+	foreignKey: 'post_id',
 	onDelete: 'cascade'
 });
 
 //set relationship between comments and user
 Comment.belongsTo(User, {
-	foreignKey: 'userId',
+	foreignKey: 'user_id',
 	onDelete: 'cascade'
 });
 
