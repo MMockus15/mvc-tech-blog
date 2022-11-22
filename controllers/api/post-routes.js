@@ -1,63 +1,117 @@
 const router = require("express").Router();
 const withAuth = require("../../utils/auth");
-const { Post } = require("../../models");
+const { Post, Comment, User } = require("../../models");
 
-
-//route that creates a new post
-//relative path = /api/post/
-router.post("/", async (req, res) => {
-  const body = req.body;
-
-  try {
-    const newPost = await Post.create({ ...req.body, userId: req.session.userId });
-    res.json(newPost);
-    console.log(newPost);
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err)
-  }
+//(works)
+//find all posts
+// realtive path = /api/post 
+router.get('/', (req, res) => {
+  Post.findAll({
+          attributes: ['id', 'body', 'title'],
+          include: [{
+                  model: User,
+                  attributes: ['userName'],
+              },
+          ],
+      })
+      .then((dbPostData) => res.json(dbPostData))
+      .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+      });
 });
 
+//(works)
+//route that creates a new post 
+//relative path = /api/post/
+router.post('/', (req, res) => {
+  console.log('creating');
+  Post.create({
+          title: req.body.title,
+          body: req.body.body,
+          userId: req.session.userId
+      })
+      .then((dbPostData) => res.json(dbPostData))
+      .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+      });
+});
+
+
+//(works)
+//finds post by id 
+//relative path = /api/post/:id
+router.get('/:id', (req, res) => {
+  Post.findOne({
+          where: {
+              id: req.params.id,
+          },
+      })
+      .then((postData) => {
+          if (!postData) {
+              res.status(404).json({
+                  message: 'Post NOT found with this id'
+              });
+              return;
+          }
+          res.json(postData);
+      })
+      .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+      });
+});
+
+//(works)
 //updating post with post:id value
 //relative path = /api/post/:id
-router.put("/:id", async (req, res) => {
-  try {
-    const [affectedRows] = await Post.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    if (affectedRows > 0) {
-      res.status(200).end();
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
-  }
+router.put('/:id', (req, res) => {
+  Post.update({
+          title: req.body.title,
+          body: req.body.body,
+      }, {
+          where: {
+              id: req.params.id,
+          },
+      })
+      .then((postData) => {
+          if (!postData) {
+              res.status(404).json({
+                  message: 'Post NOT found with this id'
+              });
+              return;
+          }
+          res.json(postData);
+      })
+      .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+      });
 });
 
+
+//(works)
 //delete post by id
 //realtive path = /api/post/:id
-router.delete("/:id", async (req, res) => {
-  try {
-    const [affectedRows] = await Post.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    if (affectedRows > 0) {
-      res.status(200).end();
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
-  }
+router.delete('/:id', (req, res) => {
+  Post.destroy({
+          where: {
+              id: req.params.id,
+          },
+      })
+      .then((postData) => {
+          if (!postData) {
+              res.status(404).json({
+                  message: 'Post NOT found with this id'
+              });
+              return;
+          }
+          res.json(postData);
+      })
+      .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+      });
 });
-
 module.exports = router;

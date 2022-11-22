@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+//(works)
 //create user route
-//relative path = /api/users
+//relative path = /api/users 
 router.post('/', async (req, res) => {
 	try {
 	const userData = await User.create({
@@ -22,8 +23,9 @@ router.post('/', async (req, res) => {
 	}
 });
 
+//(works)
 //route to log in existing user
-//realtive path = /api/users/login
+//realtive path = /api/users/login 
 router.post('/login', async (req, res) => {
 	try {
 	const userData = await User.findOne({ where: { userName: req.body.userName } });
@@ -59,6 +61,7 @@ console.log(validPassword);
 	}
 });
 
+//(works)
 //log out logged in user
 //realtive path = /api/users/logout
 router.post('/logout', (req, res) => {
