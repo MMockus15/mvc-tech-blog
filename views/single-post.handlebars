@@ -39,7 +39,9 @@
 				<h3>Add New Talk</h3>
 			</div>
 	<div>
-		<input id="new-comment-form" type="text" name="post-id" value="{{post.title}}"/>
+		<input id="new-comment-form" type="hidden" name="post-id" value="{{post.id}}"/>
+
+		<input id="new-comment-title" type="text" name="post-id" value="{{post.title}}"/>
 
 		<label class="form-label" for="comment-body">Talk</label>
 
