@@ -1,23 +1,49 @@
 
+<div class="post">
+<article class="col-auto">
+<div class="card-header flex-row justify-space-between">
+	<h1>{{post.title}}</h1>
+	<div>
+		Posted By {{post.User.userName}} on {{format_date post.createdAt}}
+	</div>
+</div>
+	<div class="card-body">
+	<p>{{post.body}}</p>
+	</div>
+	</article>
 
-<main class="col-auto">
-	<h1>{{title}}</h1>
-
-	<p>{{body}}</p>
-
-
-	{{#if req.session.loggedIn}}
-	<div class="post card">
+	{{#if post.comments}}
+	<section class="post card">
 		<div class="card-header">
-		<h2>Add Comment</h2>
+		<h2>Comments</h2>
 		</div>
-		<form id="new-post-form" class="card-body">
 
-		<input type="text" name="post-id" class="form-input" value="{{post.id}}"/>
+<div class="card-body">
+	{{#each post.comments}}
+</div>
+	<p>
+		{{Comments.body}}
+	</p>
+	<p>
+		&mdash; {{User.username}}, {{format_date createdAt}}
+	</p>
+	</div>
+	{{/each}}
+	</div>
+	</section>
+	{{/if}}
 
-		<label class="form-label" for="post-body">Talk</label>
 
-		<textarea name="post-body" class="form-input"></textarea>
+		<form id="new-comment-form" class="card-body">
+			<div class"card-header">
+				<h3>Add New Talk</h3>
+			</div>
+	<div>
+		<input type="text" name="post-id" value="{{post.title}}"/>
+
+		<label class="form-label" for="comment-body">Talk</label>
+
+		<textarea name="comment-body" class="form-input"></textarea>
 	
 	
 	<ul style="list-style: none;">
@@ -26,24 +52,11 @@
 	</ul>
 		</form>
 	</div>
-	{{/if}}
-
-
-	{{#if post.Comments}}
-	<h2>Comments</h2>
-
-	{{#each}}
-	<p>{{Comments.body}}</p>
-
-	{{/each}}
-
-	{{/if}}
-</main>
+	
 
 
 
-{{#if Comments}}
+
+
 <script src="/js/comment.js"></script>
-{{/if}}
-</body>
-</html>
+

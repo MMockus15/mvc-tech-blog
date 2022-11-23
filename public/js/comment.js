@@ -21,5 +21,5 @@ const commentFormEl = async function(event) {
 };
 
 document
-.querySelector('#')
+.querySelector('#new-comment-form')
 .addEventListener('submit', commentFormEl);

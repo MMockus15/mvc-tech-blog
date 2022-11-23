@@ -16,7 +16,7 @@
 	<nav class="navbar navbar-light bg-light">
 	<ul class="list-group list-group-flush">
 	<li class="li-inline nav-item"><a href="/">Home</a></li>
-	{{#if loggedIn}}
+	{{#if req.session.loggedIn}}
     <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
     <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
 	{{else}}
@@ -32,13 +32,17 @@
 	<h1>{{{body}}}</h1>
 </main>
 
+{{#if req.session.loggedIn}}
+<footer class="flex-row justify-center"><a id="footer-link" href="/mvc-tech-blog/views/add-post.handlebars">👉 Add Talk</a>
+</footer>
+{{else}}
 <footer class="flex-row justify-center">
 	&copy; The Techsters
 </footer>
+{{/if}}
 </body>
 
-{{#if loggedIn}}
 <script src="/js/logout.js"></script>
-{{/if}}
+
 
 </html>
