@@ -25,7 +25,7 @@
 		{{Comments.body}}
 	</p>
 	<p>
-		&mdash; {{User.username}}, {{format_date createdAt}}
+		&mdash; {{User.userName}}, {{format_date createdAt}}
 	</p>
 	</div>
 	{{/each}}
@@ -39,11 +39,11 @@
 				<h3>Add New Talk</h3>
 			</div>
 	<div>
-		<input type="text" name="post-id" value="{{post.title}}"/>
+		<input id="new-comment-form" type="text" name="post-id" value="{{post.title}}"/>
 
 		<label class="form-label" for="comment-body">Talk</label>
 
-		<textarea name="comment-body" class="form-input"></textarea>
+		<textarea id="new-comment-form" name="post-body" class="form-input"></textarea>
 	
 	
 	<ul style="list-style: none;">
