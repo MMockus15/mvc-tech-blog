@@ -1,21 +1,28 @@
+const postId = document.querySelector('input[name="post-id"]').value;
+
 const editFormHandler = async (event) => {
 	event.preventDefault();
 
 	const title = document.querySelector('input[name="post-title"]').value;
 	const body = document.querySelector('textarea[name="post-body"]').value;
 
-	await fetch(`/api/post/${postId}`, {
+	if (body && title) {
+		const response = await fetch(`/api/post/${postId}`, {
 		method: 'PUT',
 		body: JSON.stringify({
-		  title,
-		  body
-		}),
+		title,
+		body
+	}),
 		headers: {
-		  'Content-Type': 'application/json'
+		'Content-Type': 'application/json'
 		}
-	  });
-	
-	  document.location.replace('/dashboard');
+	});
+	if (response.ok) {
+		document.location.replace('/dashboard');
+	  } else {
+		alert('Failed to delete project');
+	  }
+	}
 };
 
 
