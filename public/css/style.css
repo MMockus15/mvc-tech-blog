@@ -17,6 +17,14 @@ body {
 	font-size: 45px;
 }
 
+.card-header {
+	background-color: rgb(53, 186, 120);
+}
+
+a {
+	color: #eb4007;
+}
+
 #new-post-form {
 	background-color: rgb(53, 186, 120);
 }
