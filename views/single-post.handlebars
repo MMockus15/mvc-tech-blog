@@ -13,17 +13,17 @@
 	</div>
 	</article>
 
-	{{#if post.comments}}
+	{{#if post.Comments}}
 	<section class="post card">
 		<div class="card-header">
 		<h2>Comments</h2>
 		</div>
 
 <div class="card-body">
-	{{#each post.comments}}
+	{{#each post.Comments}}
 </div>
 	<p>
-		{{Comments.body}}
+		{{body}}
 	</p>
 	<p>
 		&mdash; {{User.userName}}, {{format_date createdAt}}
