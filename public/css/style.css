@@ -47,6 +47,12 @@ a {
 	background-color: rgb(53, 186, 120);
 }
 
+.talk-adds {
+	color: rgb(53, 186, 120);
+	font: bolder;
+	font-size: 20px;
+}
+
 
 #footer-link {
 	color: rgb(53, 186, 120);

@@ -24,7 +24,7 @@ router.post('/',  (req, res) => {
                 body: req.body.body,
                 post_id: req.body.postId,
                 //change back to session
-               user_id: req.body.user_id
+            user_id: req.body.user_id
             })
             .then(commentData => res.json(commentData))
             .catch(err => {

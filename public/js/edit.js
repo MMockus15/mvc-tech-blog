@@ -28,24 +28,24 @@ const editFormHandler = async (event) => {
 
 const delButtonHandler = async (event) => {
 	if (event.target.hasAttribute('data-id')) {
-	  const id = event.target.getAttribute('data-id');
-  
-	  const response = await fetch(`/api/post/${postId}`, {
+	const id = event.target.getAttribute('data-id');
+
+	const response = await fetch(`/api/post/${postId}`, {
 		method: 'DELETE',
-	  });
-  
-	  if (response.ok) {
+	});
+
+	if (response.ok) {
 		document.location.replace('/dashboard');
-	  } else {
+	} else {
 		alert('Failed to delete project');
-	  }
 	}
-  };
-  
-  document
+	}
+};
+
+document
 	.querySelector('#edit-post-form')
 	.addEventListener('submit', editFormHandler);
-  
-  document
+
+document
 	.querySelector('#delete-btn')
 	.addEventListener('click', delButtonHandler);
