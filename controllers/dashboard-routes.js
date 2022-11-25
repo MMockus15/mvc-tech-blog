@@ -16,7 +16,7 @@ router.get("/", withAuth, async (req, res) => {
 
     res.render("all-posts-dashboard", {
       layout: "dashboard",
-      posts,
+      posts, loggedIn: req.session.loggedIn
     });
   } catch (err) {
     res.redirect("login");
@@ -25,8 +25,8 @@ router.get("/", withAuth, async (req, res) => {
 
 //render form to create new post
 //realtive path = /dashboard/add
-router.get("/add", withAuth, (req, res) => {
-  res.render("add-post-dashboard", {
+router.get("/add", (req, res) => {
+  res.render("add-post", {
     layout: "dashboard",
   });
 });
@@ -42,7 +42,7 @@ router.get("/update/:id", withAuth, async (req, res) => {
 
       res.render("update-post", {
         layout: "dashboard",
-        post,
+        post, loggedIn: req.session.loggedIn
       });
     } else {
       res.status(404).end();
