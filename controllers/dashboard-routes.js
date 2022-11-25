@@ -25,9 +25,9 @@ router.get("/", withAuth, async (req, res) => {
 
 //render form to create new post
 //realtive path = /dashboard/add
-router.get("/add", (req, res) => {
+router.get("/add", withAuth, (req, res) => {
   res.render("add-post", {
-    layout: "dashboard",
+    loggedIn: req.session.loggedIn,
   });
 });
 
