@@ -16,9 +16,11 @@
 		<ul style="list-style: none;">
 		<li><button type="submit" class="update-btn">👉 Update Your Talk</button></li>
 
-		<li><button type="submit" class="delete-btn">👉 Delete Your Talk</button></li>
+		<li><button type="submit" id="delete-btn" class="delete-btn">👉 Delete Your Talk</button></li>
 		</ul>
 		</form>
 	</div>
 
+	{{#if loggedIn}}
 	<script src="/js/edit.js"></script>
+	{{/if}}

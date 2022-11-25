@@ -7,15 +7,15 @@ const newFormHandler = async (event) => {
 	await fetch(`/api/post/${postId}`, {
 		method: 'PUT',
 		body: JSON.stringify({
-		  title,
-		  body
+		title,
+		body
 		}),
 		headers: {
-		  'Content-Type': 'application/json'
+		'Content-Type': 'application/json'
 		}
-	  });
+	});
 	
-	  document.location.replace('/dashboard');
+	document.location.replace('/dashboard');
 };
 
 

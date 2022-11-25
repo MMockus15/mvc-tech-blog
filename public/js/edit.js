@@ -19,9 +19,9 @@ const editFormHandler = async (event) => {
 	});
 	if (response.ok) {
 		document.location.replace('/dashboard');
-	  } else {
+	} else {
 		alert('Failed to delete project');
-	  }
+	}
 	}
 };
 
