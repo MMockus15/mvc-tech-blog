@@ -3,10 +3,10 @@
 <article class="card">
     <div class="card-header flex-row justify-space-between">
     <h2>
-        <a href="/post/{{post.id}}">{{title}}</a>
+        <a href="/post/{{id}}">{{title}}</a>
     </h2>
     <div>
-        Posted by {{post.User.userName}} on {{format_date createdAt}}
+        Posted by {{User.userName}} on {{format_date createdAt}}
     </div>
     </div>
     <div class="card-body">
@@ -15,7 +15,3 @@
 </article>
 {{/each}}
 </div>
-{{!-- It looks like there isn't a user_id field on the posts to attach to the user.
-1. Make sure that you add the user_id property, (it looks like your associations are correct which is good)
-2. After completing step one you will have to seed your database again.
-3. Now make sure you are receiving the data in the console.log I had you enter earlier --}}

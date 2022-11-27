@@ -1,65 +1,55 @@
-
-
 <div class="post">
-<article class="col-auto">
-<div class="card-header flex-row justify-space-between">
-	<h1>{{post.title}}</h1>
-	<div>
-		Posted By {{post.User.userName}} on {{format_date post.createdAt}}
-	</div>
-</div>
-	<div class="card-body">
-	<p>{{post.body}}</p>
-	</div>
+	<article class="col-auto">
+		<div class="card-header flex-row justify-space-between">
+			<h1>{{post.title}}</h1>
+			<div>
+				Posted By {{post.User.userName}} on {{format_date post.createdAt}}
+			</div>
+		</div>
+		<div class="card-body">
+			<p>{{post.body}}</p>
+		</div>
 	</article>
+</div>
 
 	{{#if post.Comments}}
 	<section class="post card">
 		<div class="card-header">
-		<h2>Comments</h2>
+			<h2>Comments</h2>
 		</div>
 
-<div class="card-body">
-	{{#each post.Comments}}
-</div>
-	<p>
-		{{body}}
-	</p>
-	<p>
-		&mdash; {{User.userName}}, {{format_date createdAt}}
-	</p>
-	</div>
-	{{/each}}
-	</div>
+		{{#each post.Comments}}
+		<div class="card-body">
+			<p>{{body}}</p>
+			<p>&mdash; {{User.userName}}, {{format_date createdAt}}</p>
+		</div>
+		{{/each}}
+	
 	</section>
 	{{/if}}
 
+{{#if loggedIn}}
+	<form id="new-comment-form" class="card-body">
+		<div class"card-header">
+			<h3>Add New Talk</h3>
+		</div>
+		<div>
+			<input id="new-comment-form" type="hidden" name="post-id" value="{{post.id}}"/>
 
-		<form id="new-comment-form" class="card-body">
-			<div class"card-header">
-				<h3>Add New Talk</h3>
-			</div>
-	<div>
-		<input id="new-comment-form" type="hidden" name="post-id" value="{{post.id}}"/>
+			<label class="form-label" for="comment-body">Talk</label>
 
-		<input id="new-comment-title" type="text" name="post-id" value="{{post.title}}"/>
-
-		<label class="form-label" for="comment-body">Talk</label>
-
-		<textarea id="new-comment-form" name="post-body" class="form-input"></textarea>
+			<textarea id="new-comment-form" name="comment-body" class="form-input"></textarea>
 	
 	
-	<ul style="list-style: none;">
-		<li><button type="submit" class="btn talk-adds">👉 Add Your Talk</button>
-		</li>
-	</ul>
-		</form>
-	</div>
+			<ul style="list-style: none;">
+				<li><button type="submit" class="btn talk-adds">👉 Add Your Comment</button>
+				</li>
+			</ul>
+	</form>
+
 	
-
-
-
-
-
+	{{/if}}
+	
+	
 <script src="/js/comment.js"></script>
 

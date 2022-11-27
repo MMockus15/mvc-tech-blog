@@ -1,18 +1,20 @@
 const router = require("express").Router();
 const { Post, Comment, User } = require("../models");
 
-
 //GET all posts for homepage with users data
 router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [User, {
-        model: Comment,
-        include: [User]
-      }],
+      include: [
+        User,
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
     });
-    console.log(postData);
     const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts);
 
     res.render("all-posts-main", { posts, loggedIn: req.session.loggedIn });
   } catch (err) {
@@ -20,50 +22,49 @@ router.get("/", async (req, res) => {
   }
 });
 
-
 // get single post by id
 router.get("/post/:id", async (req, res) => {
-try {
+  try {
     const postData = await Post.findByPk(req.params.id, {
-    include: [
+      include: [
         User,
         {
-        model: Comment,
-        include: [User],
+          model: Comment,
+          include: [User],
         },
-    ],
+      ],
     });
 
     if (postData) {
-    const post = postData.get({ plain: true });
+      const post = postData.get({ plain: true });
 
-    res.render("single-post", { post, loggedIn: req.session.loggedIn});
+      res.render("single-post", { post, loggedIn: req.session.loggedIn });
     } else {
-    res.status(404).end();
+      res.status(404).end();
     }
-} catch (err) {
+  } catch (err) {
     res.status(500).json(err);
-}
+  }
 });
 
-//if login is true go to homeroute 
-router.get('/login', (req, res) => {
-	if (req.session.loggedIn) {
-	res.redirect('/');
-	return;
-	}
+//if login is true go to homeroute
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
 
-	res.render('login');
+  res.render("login");
 });
 
 //sign up page creates login otherwise redirect to home
-router.get('/signup', (req, res) => {
-	if (req.session.loggedIn) {
-	res.redirect('/');
-	return;
-	}
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
 
-	res.render('signup');
+  res.render("signup");
 });
 
 module.exports = router;

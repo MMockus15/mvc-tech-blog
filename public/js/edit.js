@@ -27,7 +27,7 @@ const editFormHandler = async (event) => {
 
 
 const delButtonHandler = async (event) => {
-	if (event.target.hasAttribute('data-id')) {
+	
 
 	const response = await fetch(`/api/post/${post_id}`, {
 		method: 'DELETE',
@@ -38,7 +38,7 @@ const delButtonHandler = async (event) => {
 	} else {
 		alert('Failed to delete project');
 	}
-	}
+	
 };
 
 document

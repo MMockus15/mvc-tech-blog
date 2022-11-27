@@ -1,77 +1,91 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	background-color: rgb(200, 108, 58);
-	margin: 0;
-	padding: 0;
-	font-family: 'Sono', sans-serif;
-	color: rgb(58, 22, 2);
-	font-size: 20px;
+  background-color: rgb(200, 108, 58);
+  margin: 0;
+  padding: 0;
+  font-family: "Sono", sans-serif;
+  color: rgb(58, 22, 2);
+  font-size: 20px;
 }
 
 #title-link {
-	color: rgb(58, 22, 2);
-	font-weight: bold;
-	font-size: 45px;
+  color: rgb(58, 22, 2);
+  font-weight: bold;
+  font-size: 45px;
 }
 
 .card-header {
-	background-color: rgb(53, 186, 120);
+  background-color: rgb(53, 186, 120);
+}
+
+.card-body {
+  background-color: rgb(53, 186, 120);
 }
 
 a {
-	color: #eb4007;
+  color: #eb4007;
 }
 
 #new-post-form {
-	background-color: rgb(53, 186, 120);
+  background-color: rgb(53, 186, 120);
 }
 
 .form-control {
-	width: 30%;
-	margin-left: 20px;
+  width: 30%;
+  margin-left: 20px;
 }
 
 #submit-btn {
-	background-color: rgb(53, 186, 120);
-	margin-left: 10px;
+  background-color: rgb(53, 186, 120);
+  margin-left: 10px;
 }
 
 #btn-signup {
-	color:rgb(53, 186, 120);
+  color: rgb(53, 186, 120);
 }
 
 .post-list {
-	background-color: rgb(53, 186, 120);
+  background-color: rgb(53, 186, 120);
+}
+
+.posts {
+  background-color: rgb(53, 186, 120);
 }
 
 .talk-adds {
-	color: rgb(53, 186, 120);
-	font: bolder;
-	font-size: 20px;
+  color: #eb4007;
+  font: bolder;
+  font-size: 20px;
 }
 
-#delete-button {
-	background-color: blueviolet;
+#talk-name {
+  height: 175px;
 }
 
+#delete-btn {
+  background-color: #eb4007;
+  font-size: 25px;
+}
+
+.update-btn {
+  background-color: #eb4007;
+  font-size: 25px;
+}
 
 #footer-link {
-	color: rgb(53, 186, 120);
-	font-weight: 7px;
-	font-size: 25px;
-	letter-spacing: .5rem;
+  color: rgb(35, 2, 37);
+  font-weight: bolder;
+  font-size: 30px;
+  letter-spacing: 0.5rem;
 }
-
 
 footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
-
-
