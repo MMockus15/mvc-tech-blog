@@ -14,6 +14,6 @@ This project uses the Model-View-Controller (MVC) structure to build a website s
 ![MVC-tech-blog-screen-shots](./public/images/update.png)
 ![MVC-tech-blog-screen-shots](./public/images/comments.png)
 
-[deployed heroku site](https://mvc-tech-blog-mockus.herokuapp.com/)
+[deployed heroku site](https://shrouded-thicket-04950.herokuapp.com/)
 
 
